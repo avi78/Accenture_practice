@@ -1,0 +1,84 @@
+To solve the problem of finding the subarray with the largest sum in a given integer array `nums`, we can use **Kadane's Algorithm**. This algorithm is optimal for this type of problem and operates in linear time, making it highly efficient.
+
+### Kadane's Algorithm
+
+The idea behind Kadane's Algorithm is to iterate through the array while keeping track of the maximum sum of subarrays ending at each position. We maintain two values:
+- `current_sum`: The sum of the current subarray being considered.
+- `max_sum`: The maximum sum found so far across all subarrays.
+
+### Steps:
+1. Initialize `current_sum` and `max_sum` with the first element of the array.
+2. Iterate through the array starting from the second element:
+   - For each element, decide whether to add it to the existing subarray (`current_sum + num`) or start a new subarray with the current element (`num`). This decision is made based on which value is larger.
+   - Update `max_sum` with the maximum value between `max_sum` and `current_sum`.
+3. Return `max_sum` at the end.
+
+### Time Complexity
+- **O(n)**: The algorithm makes a single pass through the array.
+
+### Implementation
+
+Here is the implementation of Kadane's Algorithm in Python, C++, and Java:
+
+#### Python Code
+```python
+def maxSubArray(nums):
+    current_sum = max_sum = nums[0]
+    for num in nums[1:]:
+        current_sum = max(num, current_sum + num)
+        max_sum = max(max_sum, current_sum)
+    return max_sum
+
+# Example usage
+nums = [-2, 1, -3, 4, -1, 2, 1, -5, 4]
+print(maxSubArray(nums))  # Output: 6 (subarray is [4, -1, 2, 1])
+```
+
+#### C++ Code
+```cpp
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int maxSubArray(vector<int>& nums) {
+    int current_sum = nums[0], max_sum = nums[0];
+    for (int i = 1; i < nums.size(); i++) {
+        current_sum = max(nums[i], current_sum + nums[i]);
+        max_sum = max(max_sum, current_sum);
+    }
+    return max_sum;
+}
+
+int main() {
+    vector<int> nums = {-2, 1, -3, 4, -1, 2, 1, -5, 4};
+    cout << maxSubArray(nums) << endl;  // Output: 6 (subarray is [4, -1, 2, 1])
+    return 0;
+}
+```
+
+#### Java Code
+```java
+public class Main {
+    public static int maxSubArray(int[] nums) {
+        int currentSum = nums[0];
+        int maxSum = nums[0];
+        for (int i = 1; i < nums.length; i++) {
+            currentSum = Math.max(nums[i], currentSum + nums[i]);
+            maxSum = Math.max(maxSum, currentSum);
+        }
+        return maxSum;
+    }
+
+    public static void main(String[] args) {
+        int[] nums = {-2, 1, -3, 4, -1, 2, 1, -5, 4};
+        System.out.println(maxSubArray(nums));  // Output: 6 (subarray is [4, -1, 2, 1])
+    }
+}
+```
+
+### Explanation
+- In the Python example, the `maxSubArray` function initializes `current_sum` and `max_sum` to the first element of the array. It then iterates through the remaining elements, updating `current_sum` and `max_sum` accordingly.
+- The same logic applies to the C++ and Java implementations, with appropriate syntax and function usage for each language.
+
+Kadane's Algorithm efficiently finds the subarray with the largest sum, and it's a common approach for solving this type of problem in coding interviews and competitive programming.
