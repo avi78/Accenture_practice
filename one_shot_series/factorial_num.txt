@@ -1,0 +1,80 @@
+Here's how you can calculate the factorial of a number using different programming languages.
+
+### C++
+
+```cpp
+#include <iostream>
+using namespace std;
+
+long long factorial(int n) {
+    if (n == 0 || n == 1) {
+        return 1;
+    }
+    return n * factorial(n - 1);
+}
+
+int main() {
+    int num;
+    cout << "Enter a number: ";
+    cin >> num;
+
+    if (num < 0) {
+        cout << "Factorial is not defined for negative numbers." << endl;
+    } else {
+        cout << "Factorial of " << num << " is " << factorial(num) << endl;
+    }
+
+    return 0;
+}
+```
+
+### Python
+
+```python
+def factorial(n):
+    if n == 0 or n == 1:
+        return 1
+    else:
+        return n * factorial(n - 1)
+
+# Example usage
+num = int(input("Enter a number: "))
+if num < 0:
+    print("Factorial is not defined for negative numbers.")
+else:
+    print(f"Factorial of {num} is {factorial(num)}")
+```
+
+### Java
+
+```java
+import java.util.Scanner;
+
+public class Factorial {
+    public static long factorial(int n) {
+        if (n == 0 || n == 1) {
+            return 1;
+        }
+        return n * factorial(n - 1);
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a number: ");
+        int num = scanner.nextInt();
+
+        if (num < 0) {
+            System.out.println("Factorial is not defined for negative numbers.");
+        } else {
+            System.out.println("Factorial of " + num + " is " + factorial(num));
+        }
+    }
+}
+```
+
+### Explanation
+
+- **Factorial Function**: Computes the factorial of a number `n` using recursion. The base case is when `n` is 0 or 1, which both have factorials equal to 1. For any other number, the function multiplies `n` by the factorial of `n-1`.
+- **Error Handling**: All versions handle cases where the input number is negative, as factorials for negative numbers are not defined.
+
+These programs calculate the factorial of a number provided by the user and handle edge cases where the input might be negative.

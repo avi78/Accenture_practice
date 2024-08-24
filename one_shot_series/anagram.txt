@@ -1,0 +1,229 @@
+Using an array to count character frequencies is an efficient way to solve the anagram problem, especially when you know the input consists only of lowercase English letters (a-z). You can use an array of size 26 to keep track of the frequency of each character, where each index corresponds to a character ('a' to 'z').
+
+### Python Implementation
+Here's how you can implement it in Python using a single array to count the occurrences of each character:
+
+```python
+def isAnagram(s, t):
+    if len(s) != len(t):
+        return False
+
+    # Create an array to count characters
+    count = [0] * 26  # There are 26 letters in the English alphabet
+
+    # Increment the count for characters in the first string
+    for char in s:
+        count[ord(char) - ord('a')] += 1
+
+    # Decrement the count for characters in the second string
+    for char in t:
+        count[ord(char) - ord('a')] -= 1
+
+    # If all counts are zero, s and t are anagrams
+    return all(c == 0 for c in count)
+
+# Example Usage
+print(isAnagram("anagram", "nagaram"))  # Output: True
+print(isAnagram("rat", "car"))          # Output: False
+```
+
+### Explanation:
+1. **Initialization**: An array `count` of size 26 is used to store the frequency of each character. Each index of the array represents a character from 'a' to 'z'.
+
+2. **Counting Characters**:
+   - For each character in string `s`, increment the corresponding index in the `count` array.
+   - For each character in string `t`, decrement the corresponding index in the `count` array.
+
+3. **Check Counts**: If all values in the `count` array are zero after processing both strings, then `s` and `t` are anagrams.
+
+### C++ Implementation
+Here's how you can implement it in C++:
+
+```cpp
+#include <iostream>
+#include <vector>
+using namespace std;
+
+bool isAnagram(string s, string t) {
+    if (s.length() != t.length()) {
+        return false;
+    }
+
+    vector<int> count(26, 0);
+
+    for (char c : s) {
+        count[c - 'a']++;
+    }
+
+    for (char c : t) {
+        count[c - 'a']--;
+    }
+
+    for (int c : count) {
+        if (c != 0) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+int main() {
+    cout << (isAnagram("anagram", "nagaram") ? "True" : "False") << endl;  // Output: True
+    cout << (isAnagram("rat", "car") ? "True" : "False") << endl;          // Output: False
+    return 0;
+}
+```
+
+### Java Implementation
+Here's how you can implement it in Java:
+
+```java
+public class Main {
+    public static boolean isAnagram(String s, String t) {
+        if (s.length() != t.length()) {
+            return false;
+        }
+
+        int[] count = new int[26];
+
+        for (char c : s.toCharArray()) {
+            count[c - 'a']++;
+        }
+
+        for (char c : t.toCharArray()) {
+            count[c - 'a']--;
+        }
+
+        for (int c : count) {
+            if (c != 0) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(isAnagram("anagram", "nagaram"));  // Output: true
+        System.out.println(isAnagram("rat", "car"));          // Output: false
+    }
+}
+```
+
+### Explanation:
+- **Array Indexing**: The difference `ord(char) - ord('a')` (or `c - 'a'` in C++/Java) maps each character to an index from 0 to 25.
+- **Time Complexity**: \( O(n) \), where \( n \) is the length of the strings, since you iterate through each string once.
+- **Space Complexity**: \( O(1) \), since the space used by the count array is fixed (26 elements).
+
+This method is optimal and works efficiently even for large strings, as long as the characters are restricted to lowercase English letters.
+
+To determine if two strings \( s \) and \( t \) are anagrams of each other, you can check if both strings contain the same characters with the same frequencies. An anagram means that the strings are simply rearrangements of each other.
+
+### Approach
+1. **Sorting**: A straightforward way is to sort both strings and compare them. If both sorted strings are equal, then they are anagrams.
+2. **Hash Map / Frequency Count**: Another efficient approach is to count the frequency of each character in both strings using a hash map or an array. If both strings have the same frequency for every character, then they are anagrams.
+
+### Time Complexity
+- Sorting-based approach: \( O(n \log n) \), where \( n \) is the length of the string.
+- Frequency count-based approach: \( O(n) \).
+
+### Space Complexity
+- Sorting-based approach: \( O(1) \) or \( O(n) \) depending on the sorting algorithm used.
+- Frequency count-based approach: \( O(1) \) since the space used by the hash map is fixed (26 characters for lowercase English letters).
+
+### Implementation in Different Languages
+
+#### Python Implementation
+Using frequency count approach:
+```python
+def isAnagram(s, t):
+    if len(s) != len(t):
+        return False
+    
+    count_s = {}
+    count_t = {}
+    
+    for char in s:
+        count_s[char] = count_s.get(char, 0) + 1
+    
+    for char in t:
+        count_t[char] = count_t.get(char, 0) + 1
+    
+    return count_s == count_t
+
+# Example Usage
+print(isAnagram("anagram", "nagaram"))  # Output: True
+print(isAnagram("rat", "car"))          # Output: False
+```
+
+#### C++ Implementation
+Using sorting approach:
+```cpp
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+bool isAnagram(string s, string t) {
+    if (s.length() != t.length()) {
+        return false;
+    }
+    sort(s.begin(), s.end());
+    sort(t.begin(), t.end());
+    return s == t;
+}
+
+int main() {
+    cout << (isAnagram("anagram", "nagaram") ? "True" : "False") << endl;  // Output: True
+    cout << (isAnagram("rat", "car") ? "True" : "False") << endl;          // Output: False
+    return 0;
+}
+```
+
+#### Java Implementation
+Using frequency count approach:
+```java
+import java.util.HashMap;
+import java.util.Map;
+
+public class Main {
+    public static boolean isAnagram(String s, String t) {
+        if (s.length() != t.length()) {
+            return false;
+        }
+        
+        Map<Character, Integer> countMap = new HashMap<>();
+        
+        for (char c : s.toCharArray()) {
+            countMap.put(c, countMap.getOrDefault(c, 0) + 1);
+        }
+        
+        for (char c : t.toCharArray()) {
+            if (!countMap.containsKey(c) || countMap.get(c) == 0) {
+                return false;
+            }
+            countMap.put(c, countMap.get(c) - 1);
+        }
+        
+        return true;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(isAnagram("anagram", "nagaram"));  // Output: true
+        System.out.println(isAnagram("rat", "car"));          // Output: false
+    }
+}
+```
+
+### Explanation
+1. **Sorting Approach**:
+    - Check if the lengths of \( s \) and \( t \) are different; if so, they cannot be anagrams.
+    - Sort both strings and compare them. If sorted versions are the same, return `True`, else `False`.
+
+2. **Frequency Count Approach**:
+    - Check if the lengths of \( s \) and \( t \) are different; if so, they cannot be anagrams.
+    - Create a frequency count for each character in \( s \).
+    - Iterate through \( t \) and decrease the count for each character. If any character count goes below zero or if a character is not found in the frequency map, return `False`.
+    - If all checks pass, return `True`.
+
+These methods ensure that you can efficiently and effectively determine whether two strings are anagrams.

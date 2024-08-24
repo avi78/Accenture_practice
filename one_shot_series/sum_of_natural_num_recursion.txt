@@ -1,0 +1,79 @@
+Here's how you can write a recursive program to find the sum of natural numbers in C++, Python, and Java:
+
+### C++
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int sumOfNaturalNumbers(int n) {
+    if (n <= 0) return 0; // Base case
+    return n + sumOfNaturalNumbers(n - 1); // Recursive call
+}
+
+int main() {
+    int number;
+    cout << "Enter a positive integer: ";
+    cin >> number;
+    
+    if (number < 0) {
+        cout << "Please enter a positive integer." << endl;
+    } else {
+        cout << "Sum of natural numbers up to " << number << " is " << sumOfNaturalNumbers(number) << endl;
+    }
+    
+    return 0;
+}
+```
+
+### Python
+
+```python
+def sum_of_natural_numbers(n):
+    if n <= 0: # Base case
+        return 0
+    return n + sum_of_natural_numbers(n - 1) # Recursive call
+
+# Example usage
+number = int(input("Enter a positive integer: "))
+
+if number < 0:
+    print("Please enter a positive integer.")
+else:
+    print("Sum of natural numbers up to", number, "is", sum_of_natural_numbers(number))
+```
+
+### Java
+
+```java
+import java.util.Scanner;
+
+public class SumOfNaturalNumbers {
+    public static int sumOfNaturalNumbers(int n) {
+        if (n <= 0) return 0; // Base case
+        return n + sumOfNaturalNumbers(n - 1); // Recursive call
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a positive integer: ");
+        int number = scanner.nextInt();
+        
+        if (number < 0) {
+            System.out.println("Please enter a positive integer.");
+        } else {
+            System.out.println("Sum of natural numbers up to " + number + " is " + sumOfNaturalNumbers(number));
+        }
+        
+        scanner.close();
+    }
+}
+```
+
+### Explanation
+
+1. **Base Case**: When `n` is 0 or less, return 0. This is the condition to stop recursion.
+2. **Recursive Case**: Add `n` to the result of the recursive call with `n-1`. This step breaks down the problem into smaller instances.
+3. **Input and Output**: Read the user input, check for positive integers, and then call the recursive function to compute the sum.
+
+These implementations demonstrate how recursion can be used to solve problems by breaking them down into smaller subproblems.

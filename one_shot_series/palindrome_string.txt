@@ -1,0 +1,104 @@
+Sure, let's avoid using STL (Standard Template Library) functions and work with basic operations to check if a string is a palindrome.
+
+def is_palindrome(s: str) -> bool:
+    s = s.lower()  # Optional: Convert to lowercase if you want to be case-insensitive
+    return s == s[::-1]
+
+# Example usage
+input_str = "Madam"
+print(is_palindrome(input_str))  # Output: True
+
+### Python
+
+```python
+def is_palindrome(s: str) -> bool:
+    s = s.lower()  # Optional: Convert to lowercase if you want to be case-insensitive
+    left, right = 0, len(s) - 1
+    while left < right:
+        if s[left] != s[right]:
+            return False
+        left += 1
+        right -= 1
+    return True
+
+# Example usage
+input_str = "Madam"
+print(is_palindrome(input_str))  # Output: True
+```
+
+### C++
+
+```cpp
+#include <iostream>
+#include <string>
+
+bool isPalindrome(const std::string& s) {
+    int left = 0, right = s.size() - 1;
+    while (left < right) {
+        if (tolower(s[left]) != tolower(s[right])) {  // Optional: Convert to lowercase if you want case insensitivity
+            return false;
+        }
+        ++left;
+        --right;
+    }
+    return true;
+}
+
+// Example usage
+int main() {
+    std::string input_str = "Madam";
+    std::cout << std::boolalpha << isPalindrome(input_str) << std::endl; // Output: true
+    return 0;
+}
+```
+
+### Java
+
+```java
+public class PalindromeChecker {
+    public static boolean isPalindrome(String s) {
+        s = s.toLowerCase();  // Optional: Convert to lowercase if you want to be case-insensitive
+        int left = 0;
+        int right = s.length() - 1;
+        while (left < right) {
+            if (s.charAt(left) != s.charAt(right)) {
+                return false;
+            }
+            left++;
+            right--;
+        }
+        return true;
+    }
+
+    public static void main(String[] args) {
+        String inputStr = "Madam";
+        System.out.println(isPalindrome(inputStr));  // Output: true
+    }
+}
+```
+
+### Explanation
+
+1. **Python**:
+   - Initialize two pointers, `left` at the start and `right` at the end of the string.
+   - Compare characters at these pointers.
+   - Move `left` forward and `right` backward until they meet or cross.
+   - If any mismatch is found, return `False`. If all comparisons pass, return `True`.
+
+2. **C++**:
+   - Similar logic as Python: use two pointers to check characters from both ends.
+   - Convert characters to lowercase if needed.
+   - Use basic operations to compare characters and adjust pointers.
+
+3. **Java**:
+   - Implement the same two-pointer technique.
+   - Convert to lowercase if needed.
+   - Use `charAt` to access characters in the string and compare them.
+
+### Time Complexity
+
+- **O(n)**: Where `n` is the length of the string. Each character is processed once.
+
+### Space Complexity
+
+- **O(1)**: No extra space is used beyond the input string.

@@ -1,0 +1,210 @@
+Tree traversal is a common operation in binary trees. There are three primary ways to traverse a binary tree: **inorder**, **preorder**, and **postorder**. Here are explanations and examples in Python, C++, and Java for each traversal method:
+
+### Python
+
+#### Node Definition
+
+```python
+class TreeNode:
+    def __init__(self, value=0, left=None, right=None):
+        self.value = value
+        self.left = left
+        self.right = right
+```
+
+#### Inorder Traversal
+
+Inorder traversal visits nodes in the order: left subtree, root, right subtree.
+
+```python
+def inorder_traversal(root):
+    result = []
+    def inorder(node):
+        if node:
+            inorder(node.left)
+            result.append(node.value)
+            inorder(node.right)
+    inorder(root)
+    return result
+```
+
+#### Preorder Traversal
+
+Preorder traversal visits nodes in the order: root, left subtree, right subtree.
+
+```python
+def preorder_traversal(root):
+    result = []
+    def preorder(node):
+        if node:
+            result.append(node.value)
+            preorder(node.left)
+            preorder(node.right)
+    preorder(root)
+    return result
+```
+
+#### Postorder Traversal
+
+Postorder traversal visits nodes in the order: left subtree, right subtree, root.
+
+```python
+def postorder_traversal(root):
+    result = []
+    def postorder(node):
+        if node:
+            postorder(node.left)
+            postorder(node.right)
+            result.append(node.value)
+    postorder(root)
+    return result
+```
+
+### C++
+
+#### Node Definition
+
+```cpp
+#include <iostream>
+
+struct TreeNode {
+    int value;
+    TreeNode *left;
+    TreeNode *right;
+    TreeNode(int x) : value(x), left(nullptr), right(nullptr) {}
+};
+```
+
+#### Inorder Traversal
+
+```cpp
+#include <vector>
+
+void inorderTraversal(TreeNode* root, std::vector<int>& result) {
+    if (root) {
+        inorderTraversal(root->left, result);
+        result.push_back(root->value);
+        inorderTraversal(root->right, result);
+    }
+}
+```
+
+#### Preorder Traversal
+
+```cpp
+#include <vector>
+
+void preorderTraversal(TreeNode* root, std::vector<int>& result) {
+    if (root) {
+        result.push_back(root->value);
+        preorderTraversal(root->left, result);
+        preorderTraversal(root->right, result);
+    }
+}
+```
+
+#### Postorder Traversal
+
+```cpp
+#include <vector>
+
+void postorderTraversal(TreeNode* root, std::vector<int>& result) {
+    if (root) {
+        postorderTraversal(root->left, result);
+        postorderTraversal(root->right, result);
+        result.push_back(root->value);
+    }
+}
+```
+
+### Java
+
+#### Node Definition
+
+```java
+class TreeNode {
+    int value;
+    TreeNode left, right;
+    TreeNode(int x) {
+        value = x;
+        left = right = null;
+    }
+}
+```
+
+#### Inorder Traversal
+
+```java
+import java.util.ArrayList;
+import java.util.List;
+
+public class TreeTraversal {
+    public List<Integer> inorderTraversal(TreeNode root) {
+        List<Integer> result = new ArrayList<>();
+        inorder(root, result);
+        return result;
+    }
+
+    private void inorder(TreeNode node, List<Integer> result) {
+        if (node != null) {
+            inorder(node.left, result);
+            result.add(node.value);
+            inorder(node.right, result);
+        }
+    }
+}
+```
+
+#### Preorder Traversal
+
+```java
+import java.util.ArrayList;
+import java.util.List;
+
+public class TreeTraversal {
+    public List<Integer> preorderTraversal(TreeNode root) {
+        List<Integer> result = new ArrayList<>();
+        preorder(root, result);
+        return result;
+    }
+
+    private void preorder(TreeNode node, List<Integer> result) {
+        if (node != null) {
+            result.add(node.value);
+            preorder(node.left, result);
+            preorder(node.right, result);
+        }
+    }
+}
+```
+
+#### Postorder Traversal
+
+```java
+import java.util.ArrayList;
+import java.util.List;
+
+public class TreeTraversal {
+    public List<Integer> postorderTraversal(TreeNode root) {
+        List<Integer> result = new ArrayList<>();
+        postorder(root, result);
+        return result;
+    }
+
+    private void postorder(TreeNode node, List<Integer> result) {
+        if (node != null) {
+            postorder(node.left, result);
+            postorder(node.right, result);
+            result.add(node.value);
+        }
+    }
+}
+```
+
+### Summary
+
+- **Inorder Traversal**: `left -> root -> right`
+- **Preorder Traversal**: `root -> left -> right`
+- **Postorder Traversal**: `left -> right -> root`
+
+These traversals help in accessing and processing nodes of a binary tree in different orders.

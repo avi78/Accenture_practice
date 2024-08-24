@@ -1,0 +1,123 @@
+Certainly! Here are examples of how you can use the provided search function in Python, C++, and Java.
+
+### Python Example
+
+```python
+def search_matrix(matrix, target):
+    if not matrix or not matrix[0]:
+        return False
+    
+    rows, cols = len(matrix), len(matrix[0])
+    row, col = 0, cols - 1  # Start at top-right corner
+    
+    while row < rows and col >= 0:
+        if matrix[row][col] == target:
+            return True
+        elif matrix[row][col] > target:
+            col -= 1  # Move left
+        else:
+            row += 1  # Move down
+    
+    return False
+
+# Example usage
+matrix = [
+    [1, 4, 7, 11],
+    [2, 5, 8, 12],
+    [3, 6, 9, 16],
+    [10, 13, 14, 17]
+]
+target = 5
+
+print(search_matrix(matrix, target))  # Output: True
+```
+
+### C++ Example
+
+```cpp
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+bool searchMatrix(vector<vector<int>>& matrix, int target) {
+    if (matrix.empty() || matrix[0].empty())
+        return false;
+    
+    int rows = matrix.size();
+    int cols = matrix[0].size();
+    int row = 0;
+    int col = cols - 1;  // Start at top-right corner
+    
+    while (row < rows && col >= 0) {
+        if (matrix[row][col] == target)
+            return true;
+        else if (matrix[row][col] > target)
+            col--;  // Move left
+        else
+            row++;  // Move down
+    }
+    
+    return false;
+}
+
+int main() {
+    vector<vector<int>> matrix = {
+        {1, 4, 7, 11},
+        {2, 5, 8, 12},
+        {3, 6, 9, 16},
+        {10, 13, 14, 17}
+    };
+    int target = 5;
+
+    cout << (searchMatrix(matrix, target) ? "True" : "False") << endl;  // Output: True
+    return 0;
+}
+```
+
+### Java Example
+
+```java
+public class MatrixSearch {
+    public static boolean searchMatrix(int[][] matrix, int target) {
+        if (matrix == null || matrix.length == 0 || matrix[0].length == 0)
+            return false;
+        
+        int rows = matrix.length;
+        int cols = matrix[0].length;
+        int row = 0;
+        int col = cols - 1;  // Start at top-right corner
+        
+        while (row < rows && col >= 0) {
+            if (matrix[row][col] == target)
+                return true;
+            else if (matrix[row][col] > target)
+                col--;  // Move left
+            else
+                row++;  // Move down
+        }
+        
+        return false;
+    }
+
+    public static void main(String[] args) {
+        int[][] matrix = {
+            {1, 4, 7, 11},
+            {2, 5, 8, 12},
+            {3, 6, 9, 16},
+            {10, 13, 14, 17}
+        };
+        int target = 5;
+
+        System.out.println(searchMatrix(matrix, target));  // Output: true
+    }
+}
+```
+
+### Explanation
+
+- **Matrix**: The 2D matrix is sorted both row-wise and column-wise.
+- **Target**: The number to search for within the matrix.
+- **Output**: The function returns `true` if the target is found in the matrix and `false` otherwise.
+
+You can run these code snippets in their respective environments to verify that the search function works correctly.

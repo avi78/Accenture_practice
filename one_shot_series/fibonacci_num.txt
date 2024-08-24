@@ -1,0 +1,80 @@
+Certainly! Here's how you can generate Fibonacci numbers using recursion in C++, Python, and Java.
+
+### C++
+
+```cpp
+#include <iostream>
+using namespace std;
+
+// Recursive function to calculate Fibonacci number
+int fibonacci(int n) {
+    if (n <= 1) {
+        return n;
+    }
+    return fibonacci(n - 1) + fibonacci(n - 2);
+}
+
+int main() {
+    int terms = 10; // Number of terms
+    cout << "Fibonacci sequence up to " << terms << " terms: ";
+    for (int i = 0; i < terms; ++i) {
+        cout << fibonacci(i) << " ";
+    }
+    cout << endl;
+    return 0;
+}
+```
+
+### Python
+
+```python
+def fibonacci(n):
+    if n <= 1:
+        return n
+    return fibonacci(n - 1) + fibonacci(n - 2)
+
+# Example usage
+terms = 10  # Number of terms
+print(f"Fibonacci sequence up to {terms} terms:", end=" ")
+for i in range(terms):
+    print(fibonacci(i), end=" ")
+print()
+```
+
+### Java
+
+```java
+public class Fibonacci {
+    // Recursive function to calculate Fibonacci number
+    public static int fibonacci(int n) {
+        if (n <= 1) {
+            return n;
+        }
+        return fibonacci(n - 1) + fibonacci(n - 2);
+    }
+
+    public static void main(String[] args) {
+        int terms = 10; // Number of terms
+        System.out.print("Fibonacci sequence up to " + terms + " terms: ");
+        for (int i = 0; i < terms; i++) {
+            System.out.print(fibonacci(i) + " ");
+        }
+        System.out.println();
+    }
+}
+```
+
+### Explanation
+
+1. **Recursive Function**:
+   - **C++**: The `fibonacci` function checks if `n` is less than or equal to 1, returning `n` if true. Otherwise, it recursively calls itself to compute the sum of the two preceding Fibonacci numbers.
+   - **Python**: The `fibonacci` function behaves similarly, using recursion to compute the Fibonacci number.
+   - **Java**: The `fibonacci` method uses recursion to compute Fibonacci numbers in the same way.
+
+2. **Output**:
+   - **C++**: A loop calls the recursive function for each term and prints the results.
+   - **Python**: A loop prints the results of the recursive function calls.
+   - **Java**: A loop prints each Fibonacci number computed by the recursive function.
+
+### Note
+Recursive solutions can be inefficient for large `n` due to repeated calculations. For practical purposes, especially with larger values of `n`, an iterative approach or memoization (caching results) is preferred to improve performance.

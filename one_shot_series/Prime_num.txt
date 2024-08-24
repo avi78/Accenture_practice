@@ -1,0 +1,77 @@
+To determine whether a given number is prime, we can use a simple algorithm that checks divisibility from 2 up to the square root of the number. If the number is divisible by any of these values, it's not a prime number; otherwise, it is. This approach is efficient for checking prime numbers.
+
+### Prime Number Check
+
+Here is a simple implementation of a prime number checker in Python, C++, and Java:
+
+### Python Code
+```python
+def is_prime(n):
+    if n <= 1:
+        return False
+    for i in range(2, int(n**0.5) + 1):
+        if n % i == 0:
+            return False
+    return True
+
+# Example usage
+num = 29
+if is_prime(num):
+    print(f"{num} is a prime number.")
+else:
+    print(f"{num} is not a prime number.")
+```
+
+### C++ Code
+```cpp
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+bool isPrime(int n) {
+    if (n <= 1) return false;
+    for (int i = 2; i <= sqrt(n); i++) {
+        if (n % i == 0) return false;
+    }
+    return true;
+}
+
+int main() {
+    int num = 29;
+    if (isPrime(num))
+        cout << num << " is a prime number." << endl;
+    else
+        cout << num << " is not a prime number." << endl;
+    return 0;
+}
+```
+
+### Java Code
+```java
+public class Main {
+    public static boolean isPrime(int n) {
+        if (n <= 1) return false;
+        for (int i = 2; i <= Math.sqrt(n); i++) {
+            if (n % i == 0) return false;
+        }
+        return true;
+    }
+
+    public static void main(String[] args) {
+        int num = 29;
+        if (isPrime(num))
+            System.out.println(num + " is a prime number.");
+        else
+            System.out.println(num + " is not a prime number.");
+    }
+}
+```
+
+### Explanation
+
+1. **Check Edge Cases**: First, we check if the number is less than or equal to 1. If it is, it's not a prime number.
+2. **Loop Through Possible Divisors**: We loop from 2 up to the square root of the number (inclusive). If we find any divisor during this loop, the number is not a prime.
+3. **Square Root Optimization**: Instead of checking all numbers up to `n`, we only check up to `sqrt(n)`, as any factor larger than the square root would have a corresponding factor smaller than the square root.
+
+### Time Complexity
+- The time complexity of this algorithm is **O(√n)**, which is efficient for checking if a number is prime, especially when `n` is large.

@@ -1,0 +1,90 @@
+To find the number of occurrences of each element in an array, you can use different approaches depending on the programming language. Below are implementations for C++, Python, and Java:
+
+### C++
+
+You can use a hash map (`unordered_map` in C++) to store the count of each element.
+
+```cpp
+#include <iostream>
+#include <unordered_map>
+#include <vector>
+using namespace std;
+
+void countOccurrences(const vector<int>& arr) {
+    unordered_map<int, int> countMap;
+    
+    for (int num : arr) {
+        countMap[num]++;
+    }
+    
+    for (const auto& entry : countMap) {
+        cout << "Element " << entry.first << " occurs " << entry.second << " times" << endl;
+    }
+}
+
+int main() {
+    vector<int> arr = {1, 2, 2, 3, 3, 3, 4, 4, 4, 4};
+    countOccurrences(arr);
+    return 0;
+}
+```
+
+### Python
+
+You can use the `collections.Counter` class which makes it very easy to count occurrences.
+
+```python
+from collections import Counter
+
+def count_occurrences(arr):
+    count = Counter(arr)
+    for element, freq in count.items():
+        print(f"Element {element} occurs {freq} times")
+
+# Example usage
+arr = [1, 2, 2, 3, 3, 3, 4, 4, 4, 4]
+count_occurrences(arr)
+```
+
+### Java
+
+You can use `HashMap` to count the occurrences of each element.
+
+```java
+import java.util.HashMap;
+import java.util.Map;
+
+public class CountOccurrences {
+    public static void countOccurrences(int[] arr) {
+        HashMap<Integer, Integer> countMap = new HashMap<>();
+        
+        for (int num : arr) {
+            countMap.put(num, countMap.getOrDefault(num, 0) + 1);
+        }
+        
+        for (Map.Entry<Integer, Integer> entry : countMap.entrySet()) {
+            System.out.println("Element " + entry.getKey() + " occurs " + entry.getValue() + " times");
+        }
+    }
+
+    public static void main(String[] args) {
+        int[] arr = {1, 2, 2, 3, 3, 3, 4, 4, 4, 4};
+        countOccurrences(arr);
+    }
+}
+```
+
+### Explanation
+
+1. **Data Structure**:
+   - **C++**: Uses `unordered_map` to store each element and its count.
+   - **Python**: Uses `Counter` from the `collections` module which is a specialized dictionary for counting.
+   - **Java**: Uses `HashMap` to store and count occurrences.
+
+2. **Count Logic**:
+   - **C++**: Iterates through the array and updates the count in the map.
+   - **Python**: Uses `Counter` to create a frequency dictionary directly.
+   - **Java**: Updates the count in the `HashMap` using `getOrDefault` to handle default values easily.
+
+3. **Output**:
+   - Each language prints the element and its count in a formatted manner.

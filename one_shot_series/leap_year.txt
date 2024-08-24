@@ -1,0 +1,100 @@
+To determine if a given year is a leap year, you can follow these rules:
+
+1. **A year is a leap year if**:
+   - It is divisible by 4.
+   - However, if it is also divisible by 100, it should be divisible by 400 to be a leap year.
+
+### C++
+
+```cpp
+#include <iostream>
+using namespace std;
+
+bool isLeapYear(int year) {
+    if (year % 400 == 0) {
+        return true;
+    } else if (year % 100 == 0) {
+        return false;
+    } else if (year % 4 == 0) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+int main() {
+    int year;
+    cout << "Enter a year: ";
+    cin >> year;
+
+    if (isLeapYear(year)) {
+        cout << year << " is a leap year." << endl;
+    } else {
+        cout << year << " is not a leap year." << endl;
+    }
+
+    return 0;
+}
+```
+
+### Python
+
+```python
+def is_leap_year(year):
+    if year % 400 == 0:
+        return True
+    elif year % 100 == 0:
+        return False
+    elif year % 4 == 0:
+        return True
+    else:
+        return False
+
+# Example usage
+year = int(input("Enter a year: "))
+if is_leap_year(year):
+    print(f"{year} is a leap year.")
+else:
+    print(f"{year} is not a leap year.")
+```
+
+### Java
+
+```java
+import java.util.Scanner;
+
+public class LeapYear {
+    public static boolean isLeapYear(int year) {
+        if (year % 400 == 0) {
+            return true;
+        } else if (year % 100 == 0) {
+            return false;
+        } else if (year % 4 == 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a year: ");
+        int year = scanner.nextInt();
+
+        if (isLeapYear(year)) {
+            System.out.println(year + " is a leap year.");
+        } else {
+            System.out.println(year + " is not a leap year.");
+        }
+    }
+}
+```
+
+### Explanation
+
+- **Divisibility by 400**: If a year is divisible by 400, it's a leap year.
+- **Divisibility by 100**: If a year is divisible by 100 but not by 400, it's not a leap year.
+- **Divisibility by 4**: If a year is divisible by 4 but not by 100, it's a leap year.
+- **Otherwise**: It is not a leap year.
+
+These programs check the leap year conditions and print whether the given year is a leap year or not.

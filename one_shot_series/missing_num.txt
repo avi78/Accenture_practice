@@ -1,0 +1,93 @@
+To find a missing number in an array, you need to identify which number is missing from a sequence. The array usually contains integers from 1 to \( n \), but one number is missing. Here are several approaches to solve this problem:
+
+### 1. **Sum Formula Approach**
+
+This approach uses the arithmetic sum formula. The sum of the first \( n \) natural numbers is \( \frac{n \times (n + 1)}{2} \). By comparing this with the sum of the numbers in the array, you can find the missing number.
+
+#### Python Implementation
+```python
+def findMissingNumber(nums):
+    n = len(nums) + 1
+    total_sum = n * (n + 1) // 2
+    array_sum = sum(nums)
+    return total_sum - array_sum
+
+# Example Usage
+print(findMissingNumber([1, 2, 4, 5, 6]))  # Output: 3
+```
+
+#### Time Complexity
+- **O(n)**: Calculating the sum of the array takes O(n) time.
+- **Space Complexity**: **O(1)**: No extra space is needed other than a few variables.
+
+### 2. **XOR Approach**
+
+Using XOR is an elegant method for this problem. XOR all the numbers from 1 to \( n \) and XOR all the numbers in the array. The result will be the missing number because pairs of identical numbers cancel each other out due to the properties of XOR.
+
+#### Python Implementation
+```python
+def findMissingNumber(nums):
+    n = len(nums) + 1
+    xor_full = 0
+    xor_array = 0
+
+    for i in range(1, n + 1):
+        xor_full ^= i
+    
+    for num in nums:
+        xor_array ^= num
+    
+    return xor_full ^ xor_array
+
+# Example Usage
+print(findMissingNumber([1, 2, 4, 5, 6]))  # Output: 3
+```
+
+#### Time Complexity
+- **O(n)**: Both XOR operations run in linear time.
+- **Space Complexity**: **O(1)**: Only a few extra variables are used.
+
+### 3. **Sorting Approach**
+
+Sort the array and check for the first missing number by comparing each element to its expected value. This approach is less efficient due to the sorting step.
+
+#### Python Implementation
+```python
+def findMissingNumber(nums):
+    nums.sort()
+    for i in range(len(nums)):
+        if nums[i] != i + 1:
+            return i + 1
+    return len(nums) + 1
+
+# Example Usage
+print(findMissingNumber([1, 2, 4, 5, 6]))  # Output: 3
+```
+
+#### Time Complexity
+- **O(n log n)**: Due to sorting.
+- **Space Complexity**: **O(1)** if sorting in place, otherwise **O(n)**.
+
+### 4. **Set Approach**
+
+Use a set to store all numbers in the array, then check for the missing number.
+
+#### Python Implementation
+```python
+def findMissingNumber(nums):
+    num_set = set(nums)
+    for i in range(1, len(nums) + 2):
+        if i not in num_set:
+            return i
+
+# Example Usage
+print(findMissingNumber([1, 2, 4, 5, 6]))  # Output: 3
+```
+
+#### Time Complexity
+- **O(n)**: Inserting and checking the set both take linear time.
+- **Space Complexity**: **O(n)**: Space is used for the set.
+
+### Summary
+
+For the most efficient solution, the Sum Formula and XOR approaches are preferable due to their linear time complexity and constant space requirements. Choose the method based on the constraints and requirements of your specific problem.

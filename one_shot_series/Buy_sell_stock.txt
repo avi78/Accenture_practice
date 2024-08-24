@@ -1,0 +1,98 @@
+Sure, here’s how you can implement the "Best Time to Buy and Sell Stock" problem using the logic you provided in C++, Python, and Java.
+
+### C++
+
+```cpp
+#include <iostream>
+#include <vector>
+#include <algorithm> // For std::min and std::max
+
+using namespace std;
+
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        if (prices.empty()) return 0;
+
+        int minPrice = INT_MAX;
+        int maxProfit = 0;
+
+        for (int price : prices) {
+            minPrice = min(minPrice, price);
+            maxProfit = max(maxProfit, price - minPrice);
+        }
+
+        return maxProfit;
+    }
+};
+
+int main() {
+    Solution sol;
+    vector<int> prices = {7, 1, 5, 3, 6, 4}; // Example prices
+    cout << "Max Profit: " << sol.maxProfit(prices) << endl;
+    return 0;
+}
+```
+
+### Python
+
+```python
+def maxProfit(prices):
+    if not prices:
+        return 0
+
+    min_price = float('inf')
+    max_profit = 0
+
+    for price in prices:
+        min_price = min(min_price, price)
+        max_profit = max(max_profit, price - min_price)
+
+    return max_profit
+
+# Example usage
+prices = [7, 1, 5, 3, 6, 4] # Example prices
+print("Max Profit:", maxProfit(prices))
+```
+
+### Java
+
+```java
+public class StockProfit {
+    public int maxProfit(int[] prices) {
+        if (prices.length == 0) return 0;
+
+        int minPrice = Integer.MAX_VALUE;
+        int maxProfit = 0;
+
+        for (int price : prices) {
+            minPrice = Math.min(minPrice, price);
+            maxProfit = Math.max(maxProfit, price - minPrice);
+        }
+
+        return maxProfit;
+    }
+
+    public static void main(String[] args) {
+        StockProfit sp = new StockProfit();
+        int[] prices = {7, 1, 5, 3, 6, 4}; // Example prices
+        System.out.println("Max Profit: " + sp.maxProfit(prices));
+    }
+}
+```
+
+### Explanation
+
+- **Initialization**:
+  - `minPrice` starts with a very high value (`INT_MAX` in C++, `float('inf')` in Python, and `Integer.MAX_VALUE` in Java) to ensure it will be updated with the first price.
+  - `maxProfit` starts at 0.
+
+- **Iteration**:
+  - For each price in the array:
+    - Update `minPrice` to the minimum of the current `minPrice` and the current price.
+    - Calculate the potential profit by subtracting `minPrice` from the current price and update `maxProfit` to the maximum of `maxProfit` and this potential profit.
+
+- **Return Result**:
+  - After processing all prices, `maxProfit` will contain the maximum profit that can be achieved with a single buy and sell operation.
+
+This approach efficiently calculates the maximum profit with a time complexity of \(O(n)\) and space complexity of \(O(1)\).

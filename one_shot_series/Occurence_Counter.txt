@@ -1,0 +1,162 @@
+To count the occurrences of a given element in an array, you can use a straightforward approach. Here’s how to do it in Python, C++, and Java.
+
+### Python
+
+```python
+def count_occurrences(arr, target):
+    return arr.count(target)
+
+# Example usage
+arr = [1, 2, 3, 4, 2, 5, 2]
+target = 2
+print(count_occurrences(arr, target))  # Output: 3
+```
+
+### C++
+
+```cpp
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+int countOccurrences(const std::vector<int>& arr, int target) {
+    return std::count(arr.begin(), arr.end(), target);
+}
+
+// Example usage
+int main() {
+    std::vector<int> arr = {1, 2, 3, 4, 2, 5, 2};
+    int target = 2;
+    std::cout << countOccurrences(arr, target) << std::endl;  // Output: 3
+    return 0;
+}
+```
+
+### Java
+
+```java
+import java.util.Arrays;
+
+public class CountOccurrences {
+    public static int countOccurrences(int[] arr, int target) {
+        return (int) Arrays.stream(arr).filter(x -> x == target).count();
+    }
+
+    public static void main(String[] args) {
+        int[] arr = {1, 2, 3, 4, 2, 5, 2};
+        int target = 2;
+        System.out.println(countOccurrences(arr, target));  // Output: 3
+    }
+}
+```
+
+### Explanation
+
+1. **Python**:
+   - `arr.count(target)` directly counts the occurrences of `target` in the list `arr`.
+
+2. **C++**:
+   - Use `std::count` from the `<algorithm>` library to count the occurrences of `target` in the vector `arr`.
+
+3. **Java**:
+   - Use `Arrays.stream(arr)` to create a stream from the array.
+   - Apply `filter(x -> x == target)` to select only the elements equal to `target`.
+   - Use `count()` to count the number of such elements.
+
+### Time Complexity
+
+- **O(n)**: Where `n` is the number of elements in the array. Each element is checked once.
+
+### Space Complexity
+
+- **O(1)**: No extra space required beyond the input array and counters.
+
+Certainly! Here’s how you can count the occurrences of a given element in an array without using pre-defined functions.
+
+### Python
+
+```python
+def count_occurrences(arr, target):
+    count = 0
+    for element in arr:
+        if element == target:
+            count += 1
+    return count
+
+# Example usage
+arr = [1, 2, 3, 4, 2, 5, 2]
+target = 2
+print(count_occurrences(arr, target))  # Output: 3
+```
+
+### C++
+
+```cpp
+#include <iostream>
+#include <vector>
+
+int countOccurrences(const std::vector<int>& arr, int target) {
+    int count = 0;
+    for(int i = 0; i < arr.size(); ++i) {
+        if(arr[i] == target) {
+            ++count;
+        }
+    }
+    return count;
+}
+
+// Example usage
+int main() {
+    std::vector<int> arr = {1, 2, 3, 4, 2, 5, 2};
+    int target = 2;
+    std::cout << countOccurrences(arr, target) << std::endl;  // Output: 3
+    return 0;
+}
+```
+
+### Java
+
+```java
+public class CountOccurrences {
+    public static int countOccurrences(int[] arr, int target) {
+        int count = 0;
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == target) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public static void main(String[] args) {
+        int[] arr = {1, 2, 3, 4, 2, 5, 2};
+        int target = 2;
+        System.out.println(countOccurrences(arr, target));  // Output: 3
+    }
+}
+```
+
+### Explanation
+
+1. **Python**:
+   - Initialize `count` to 0.
+   - Iterate through each element of the array.
+   - Increment `count` whenever an element matches the target.
+
+2. **C++**:
+   - Initialize `count` to 0.
+   - Iterate through the array using a loop.
+   - Increment `count` when an element matches the target.
+
+3. **Java**:
+   - Initialize `count` to 0.
+   - Iterate through the array using a loop.
+   - Increment `count` when an element matches the target.
+
+### Time Complexity
+
+- **O(n)**: Each element of the array is checked once.
+
+### Space Complexity
+
+- **O(1)**: No additional space is used beyond the input array and the `count` variable.

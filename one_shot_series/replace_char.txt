@@ -1,0 +1,115 @@
+To transform a string by swapping all occurrences of the character `'a'` with `'b'` and vice versa, you can follow these steps:
+
+1. Iterate through each character in the string.
+2. Replace `'a'` with `'b'` and `'b'` with `'a'`.
+3. Construct and return the transformed string.
+
+Here's how you can implement this in Python:
+
+### Python Implementation
+
+def swap_a_and_b(s: str) -> str:
+    result = []
+    for ch in s:
+        if ch == 'a':
+            result.append('b')
+        elif ch == 'b':
+            result.append('a')
+        else:
+            result.append(ch)
+    return ''.join(result)
+
+# Example usage
+input_str = "abracadabra"
+transformed_str = swap_a_and_b(input_str)
+print(transformed_str)  # Output: "bbrbcbdbrb"
+
+
+### Explanation
+
+- **`str.maketrans('ab', 'ba')`**: This creates a translation table where each `'a'` is mapped to `'b'` and each `'b'` is mapped to `'a'`.
+- **`s.translate(translation_table)`**: This applies the translation table to the string `s`, replacing characters according to the mappings defined.
+
+### Time Complexity
+
+- **O(n)**: Where `n` is the length of the string. Each character is processed once.
+- **Space Complexity**: **O(n)**: Space is used for the output string.
+
+This approach is efficient and concise for transforming strings based on character replacements.
+
+Here's how you can implement the function to swap characters `'a'` and `'b'` in both C++ and Java:
+
+### C++ Implementation
+
+```cpp
+#include <iostream>
+#include <string>
+
+std::string swap_a_and_b(const std::string& str) {
+    std::string result;
+    result.reserve(str.size());
+    
+    for (char ch : str) {
+        if (ch == 'a') {
+            result += 'b';
+        } else if (ch == 'b') {
+            result += 'a';
+        } else {
+            result += ch;
+        }
+    }
+    
+    return result;
+}
+
+int main() {
+    std::string input_str = "abracadabra";
+    std::string transformed_str = swap_a_and_b(input_str);
+    std::cout << transformed_str << std::endl;  // Output: "bbrbcbdbrb"
+    return 0;
+}
+```
+
+### Java Implementation
+
+```java
+public class Main {
+    public static String swapAAndB(String str) {
+        StringBuilder result = new StringBuilder();
+        
+        for (char ch : str.toCharArray()) {
+            if (ch == 'a') {
+                result.append('b');
+            } else if (ch == 'b') {
+                result.append('a');
+            } else {
+                result.append(ch);
+            }
+        }
+        
+        return result.toString();
+    }
+
+    public static void main(String[] args) {
+        String inputStr = "abracadabra";
+        String transformedStr = swapAAndB(inputStr);
+        System.out.println(transformedStr);  // Output: "bbrbcbdbrb"
+    }
+}
+```
+
+### Explanation
+
+- **C++**:
+  - Use `std::string` to store the result and append characters accordingly.
+  - Iterate through each character, replacing `'a'` with `'b'` and `'b'` with `'a'`.
+
+- **Java**:
+  - Use `StringBuilder` to efficiently build the resulting string.
+  - Convert the input string to a character array for easy iteration.
+  - Append the appropriate characters to the `StringBuilder` based on conditions.
+
+### Time Complexity
+
+- **O(n)**: Where `n` is the length of the string. Each character is processed once.
+- **Space Complexity**: **O(n)**: Space is used for the output string.

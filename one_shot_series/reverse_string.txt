@@ -1,0 +1,114 @@
+To reverse the order of words in a string, you'll need to:
+
+1. **Split** the string into words.
+2. **Reverse** the list of words.
+3. **Join** the reversed list back into a string.
+
+Here’s how you can do this in Python, C++, and Java:
+
+### Python
+
+```python
+def reverse_words(s: str) -> str:
+    # Split the string into words
+    words = s.split()
+    # Reverse the list of words
+    reversed_words = words[::-1]
+    # Join the reversed list into a string
+    return ' '.join(reversed_words)
+
+# Example usage
+input_str = "Hello world this is OpenAI"
+print(reverse_words(input_str))  # Output: "OpenAI is this world Hello"
+```
+
+### C++
+
+```cpp
+#include <iostream>
+#include <sstream>
+#include <vector>
+#include <algorithm>
+
+std::string reverseWords(const std::string& s) {
+    std::istringstream iss(s);
+    std::vector<std::string> words;
+    std::string word;
+    
+    // Split the string into words
+    while (iss >> word) {
+        words.push_back(word);
+    }
+    
+    // Reverse the list of words
+    std::reverse(words.begin(), words.end());
+    
+    // Join the reversed list into a string
+    std::ostringstream oss;
+    for (size_t i = 0; i < words.size(); ++i) {
+        if (i != 0) {
+            oss << " ";
+        }
+        oss << words[i];
+    }
+    
+    return oss.str();
+}
+
+// Example usage
+int main() {
+    std::string input_str = "Hello world this is OpenAI";
+    std::cout << reverseWords(input_str) << std::endl;  // Output: "OpenAI is this world Hello"
+    return 0;
+}
+```
+
+### Java
+
+```java
+public class ReverseWords {
+    public static String reverseWords(String s) {
+        String[] words = s.split(" ");
+        StringBuilder reversed = new StringBuilder();
+        
+        // Append words in reverse order
+        for (int i = words.length - 1; i >= 0; i--) {
+            if (i != words.length - 1) {
+                reversed.append(" ");
+            }
+            reversed.append(words[i]);
+        }
+        
+        return reversed.toString();
+    }
+
+    public static void main(String[] args) {
+        String inputStr = "Hello world this is OpenAI";
+        System.out.println(reverseWords(inputStr));  // Output: "OpenAI is this world Hello"
+    }
+}
+```
+
+### Explanation
+
+1. **Python**:
+   - `split()` breaks the string into words.
+   - `[::-1]` reverses the list.
+   - `' '.join()` joins the reversed list into a string.
+
+2. **C++**:
+   - Use `istringstream` to split the string into words.
+   - Use `vector` to store words and `reverse` to reverse the list.
+   - Use `ostringstream` to join the reversed list into a string.
+
+3. **Java**:
+   - Use `split(" ")` to split the string into words.
+   - Use `StringBuilder` to construct the reversed string.
+
+### Time Complexity
+
+- **O(n)**: Where `n` is the length of the string. Each character is processed a constant number of times.
+
+### Space Complexity
+
+- **O(n)**: Space required for the list of words and the reversed string.

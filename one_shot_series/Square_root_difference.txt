@@ -1,0 +1,114 @@
+To calculate and return the difference between the sum of square roots of even numbers and the sum of square roots of odd numbers in a range from `m` to `n` (inclusive), you can follow these steps:
+
+1. Iterate through the numbers in the range `[m, n]`.
+2. Check if each number is even or odd.
+3. Compute the square root of the number.
+4. Accumulate the square roots separately for even and odd numbers.
+5. Compute the difference between the sum of square roots of even numbers and the sum of square roots of odd numbers.
+
+Here's how you can implement this in Python, C++, and Java.
+
+### Python
+
+```python
+import math
+
+def difference_of_square_roots(m, n):
+    sum_even = 0
+    sum_odd = 0
+    
+    for num in range(m, n + 1):
+        sqrt_num = math.sqrt(num)
+        if num % 2 == 0:
+            sum_even += sqrt_num
+        else:
+            sum_odd += sqrt_num
+            
+    return sum_even - sum_odd
+
+# Example usage
+m = 1
+n = 10
+print(difference_of_square_roots(m, n))  # Output will depend on the range
+```
+
+### C++
+
+```cpp
+#include <iostream>
+#include <cmath>
+
+double differenceOfSquareRoots(int m, int n) {
+    double sumEven = 0;
+    double sumOdd = 0;
+    
+    for (int num = m; num <= n; ++num) {
+        double sqrtNum = std::sqrt(num);
+        if (num % 2 == 0) {
+            sumEven += sqrtNum;
+        } else {
+            sumOdd += sqrtNum;
+        }
+    }
+    
+    return sumEven - sumOdd;
+}
+
+// Example usage
+int main() {
+    int m = 1;
+    int n = 10;
+    std::cout << differenceOfSquareRoots(m, n) << std::endl;  // Output will depend on the range
+    return 0;
+}
+```
+
+### Java
+
+```java
+public class DifferenceOfSquareRoots {
+    public static double differenceOfSquareRoots(int m, int n) {
+        double sumEven = 0;
+        double sumOdd = 0;
+        
+        for (int num = m; num <= n; num++) {
+            double sqrtNum = Math.sqrt(num);
+            if (num % 2 == 0) {
+                sumEven += sqrtNum;
+            } else {
+                sumOdd += sqrtNum;
+            }
+        }
+        
+        return sumEven - sumOdd;
+    }
+
+    public static void main(String[] args) {
+        int m = 1;
+        int n = 10;
+        System.out.println(differenceOfSquareRoots(m, n));  // Output will depend on the range
+    }
+}
+```
+
+### Explanation
+
+1. **Python**:
+   - Use `math.sqrt()` to calculate the square root.
+   - Iterate through the range `[m, n]`, compute square roots, and accumulate based on parity.
+
+2. **C++**:
+   - Use `std::sqrt()` to calculate the square root.
+   - Iterate through the range `[m, n]`, compute square roots, and accumulate based on parity.
+
+3. **Java**:
+   - Use `Math.sqrt()` to calculate the square root.
+   - Iterate through the range `[m, n]`, compute square roots, and accumulate based on parity.
+
+### Time Complexity
+
+- **O(n - m + 1)**: You need to iterate through each number in the range `[m, n]`.
+
+### Space Complexity
+
+- **O(1)**: No additional space beyond a few variables is used.
