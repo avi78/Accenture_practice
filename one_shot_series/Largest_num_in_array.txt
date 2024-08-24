@@ -1,0 +1,79 @@
+Here are simple programs in C++, Java, and Python to find the largest number in an array:
+
+### C++ Code
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n;
+    cout << "Enter the number of elements: ";
+    cin >> n;
+    int arr[n];
+
+    cout << "Enter the elements: ";
+    for (int i = 0; i < n; i++) {
+        cin >> arr[i];
+    }
+
+    int maxElement = arr[0];
+    for (int i = 1; i < n; i++) {
+        if (arr[i] > maxElement) {
+            maxElement = arr[i];
+        }
+    }
+
+    cout << "Largest number is: " << maxElement << endl;
+    return 0;
+}
+```
+
+### Java Code
+```java
+import java.util.Scanner;
+
+public class LargestInArray {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter the number of elements: ");
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+
+        System.out.println("Enter the elements: ");
+        for (int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
+        }
+
+        int maxElement = arr[0];
+        for (int i = 1; i < n; i++) {
+            if (arr[i] > maxElement) {
+                maxElement = arr[i];
+            }
+        }
+
+        System.out.println("Largest number is: " + maxElement);
+        sc.close();
+    }
+}
+```
+
+### Python Code
+```python
+n = int(input("Enter the number of elements: "))
+arr = list(map(int, input("Enter the elements: ").split()))
+
+max_element = arr[0]
+for num in arr:
+    if num > max_element:
+        max_element = num
+
+print("Largest number is:", max_element)
+```
+
+### Explanation
+1. **Input the number of elements**: These programs first take the number of elements (`n`) in the array.
+2. **Input the array elements**: The user is then prompted to enter the elements of the array.
+3. **Find the maximum element**: Each program initializes the maximum element as the first element of the array. It then iterates through the array to find the largest element by comparing each element with the current maximum.
+
+These are simple, easy-to-understand implementations that should help you find the largest number in an array!

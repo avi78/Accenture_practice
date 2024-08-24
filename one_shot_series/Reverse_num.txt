@@ -1,0 +1,60 @@
+Here are short and easy programs to reverse a number in C++, Java, and Python:
+
+### C++ Code
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    int num, reversed = 0;
+    cout << "Enter a number: ";
+    cin >> num;
+
+    while (num != 0) {
+        int digit = num % 10;
+        reversed = reversed * 10 + digit;
+        num /= 10;
+    }
+
+    cout << "Reversed number: " << reversed << endl;
+    return 0;
+}
+```
+
+### Java Code
+```java
+import java.util.Scanner;
+
+public class ReverseNumber {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter a number: ");
+        int num = sc.nextInt();
+        int reversed = 0;
+
+        while (num != 0) {
+            int digit = num % 10;
+            reversed = reversed * 10 + digit;
+            num /= 10;
+        }
+
+        System.out.println("Reversed number: " + reversed);
+        sc.close();
+    }
+}
+```
+
+### Python Code
+```python
+num = int(input("Enter a number: "))
+reversed_num = 0
+
+while num != 0:
+    digit = num % 10
+    reversed_num = reversed_num * 10 + digit
+    num //= 10
+
+print("Reversed number:", reversed_num)
+```
+
+These programs take an integer input from the user, reverse the digits, and then print the reversed number.
